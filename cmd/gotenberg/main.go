@@ -71,8 +71,12 @@ func mustStartProcesses(opts *api.Options) []pm2.Process {
 }
 
 func mustStartAPI(srv *echo.Echo) {
-	notify.Print("http server started on port 3000")
-	if err := srv.Start(":3000"); err != nil {
+	var port = os.Getenv("PORT");
+	if (port == nil) {
+		port = "3000";
+	}
+	notify.Printf("http server started on port %u", port)
+	if err := srv.Start(fmt.Printf(":%u", port); err != nil {
 		if err != http.ErrServerClosed {
 			notify.ErrPrint(err)
 			os.Exit(1)
