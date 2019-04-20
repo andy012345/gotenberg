@@ -73,7 +73,7 @@ func mustStartProcesses(opts *api.Options) []pm2.Process {
 func mustStartAPI(srv *echo.Echo) {
 	var port = 3000
 	ok := os.LookupEnv("PORT"); ok {
-		port := os.Getenv("PORT")
+		port = os.Getenv("PORT")
 	}
 
 	notify.Printf("http server started on port %u", port)
